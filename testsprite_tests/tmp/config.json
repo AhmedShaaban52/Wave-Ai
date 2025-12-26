@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "backendAuthType": "Bearer token",
+  "backendCredential": "l6OHQemPNaMJBCD04DTGyVuF4r4Rvy2m.JSbslKu4FiAV6LT7o2LW7yS%2FBbkTt8q3Lo8UFKaR6QE%3D",
+  "executionArgs": {
+    "projectName": "new-folder",
+    "projectPath": "e:\\Ahmed\\Next.Js Projects\\Build a SaaS AI Agent\\new-folder",
+    "testIds": [],
+    "additionalInstruction": "Exclude all /api/auth routes from testing. Only test the following endpoints: /api (GET), /api/chat (POST), /api/note endpoints (POST, PATCH, GET, DELETE), and /api/subscription endpoints (POST). Do NOT test any authentication or auth-related routes.",
+    "envs": {
+      "API_KEY": "sk-user-L5NcJUSNLRG-2fbMYKrEuQth9lE-AjKcV8yLxLLA4oh9C9te-2v7zKrh1iRKtQkhJ2PVR9PonTa6nReKlpikVNpEHK7Buh8NU5w4tQ2PBXhHF0nhHU_E09X4SEcgI6WtNw8"
+    }
+  },
+  "proxy": "http://1109ca15-8ba6-410a-86e5-1217a84cdf9a:HFa07749cAo64RuxBhDN71rhZfmH6P7m@tun.testsprite.com:8080"
+}

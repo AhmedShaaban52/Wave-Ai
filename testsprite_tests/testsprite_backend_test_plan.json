@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC001",
+    "title": "health check endpoint authentication",
+    "description": "Verify that the health check endpoint at GET / requires authentication and returns a successful response when accessed with valid session credentials."
+  },
+  {
+    "id": "TC002",
+    "title": "send chat message and receive ai response",
+    "description": "Test the POST /chat endpoint by sending a valid chat message payload including id, message object, selectedModelId, and selectedToolName, and verify that the AI response is returned correctly."
+  },
+  {
+    "id": "TC003",
+    "title": "create new note with valid data",
+    "description": "Test the POST /note/create endpoint by creating a new note with valid title and content, and verify that the note is created successfully and associated with the authenticated user."
+  },
+  {
+    "id": "TC004",
+    "title": "update existing note with partial data",
+    "description": "Test the PATCH /note/update/:id endpoint by updating an existing note with partial data such as only title or only content, and verify that the note is updated correctly without affecting other fields."
+  },
+  {
+    "id": "TC005",
+    "title": "get note by id with authentication",
+    "description": "Verify that the GET /note/:id endpoint returns the correct note data for the given note ID when accessed with valid authentication, and returns appropriate error for invalid or unauthorized access."
+  },
+  {
+    "id": "TC006",
+    "title": "delete note with valid authentication",
+    "description": "Test the DELETE /note/:id endpoint to delete a note by ID, ensuring that the note is removed successfully and cannot be accessed afterwards, with proper authentication enforced."
+  },
+  {
+    "id": "TC007",
+    "title": "upgrade user subscription plan",
+    "description": "Test the POST /subscription/upgrade endpoint by submitting a valid plan value (PLUS or PREMIUM) and callbackUrl, and verify that the user's subscription plan is upgraded accordingly with proper session authentication."
+  }
+]

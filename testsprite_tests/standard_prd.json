@@ -1,0 +1,72 @@
+{
+  "project_name": "Wave AI SaaS Platform",
+  "project_description": "An AI-powered SaaS platform built with Next.js for chat, note-taking, and subscription management",
+  "api_specification": {
+    "base_url": "http://localhost:3000/api",
+    "authentication": "Session-based (Better Auth)",
+    "endpoints": [
+      {
+        "path": "/",
+        "method": "GET",
+        "description": "Health check endpoint",
+        "requires_auth": true
+      },
+      {
+        "path": "/chat",
+        "method": "POST",
+        "description": "Send a chat message and receive AI response",
+        "requires_auth": true,
+        "request_body": {
+          "id": "string",
+          "message": "object",
+          "selectedModelId": "string",
+          "selectedToolName": "string|null"
+        }
+      },
+      {
+        "path": "/note/create",
+        "method": "POST",
+        "description": "Create a new note",
+        "requires_auth": true,
+        "request_body": {
+          "title": "string",
+          "content": "string"
+        }
+      },
+      {
+        "path": "/note/update/:id",
+        "method": "PATCH",
+        "description": "Update an existing note",
+        "requires_auth": true,
+        "request_body": {
+          "title": "string|optional",
+          "content": "string|optional"
+        }
+      },
+      {
+        "path": "/note/:id",
+        "method": "GET",
+        "description": "Get a note by ID",
+        "requires_auth": true
+      },
+      {
+        "path": "/note/:id",
+        "method": "DELETE",
+        "description": "Delete a note",
+        "requires_auth": true
+      },
+      {
+        "path": "/subscription/upgrade",
+        "method": "POST",
+        "description": "Upgrade user subscription plan",
+        "requires_auth": true,
+        "request_body": {
+          "plan": "PLUS|PREMIUM",
+          "callbackUrl": "string"
+        }
+      }
+    ],
+    "excluded_routes": ["/api/auth/*"]
+  },
+  "test_scope": "API endpoints (excluding /api/auth)"
+}

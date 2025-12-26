@@ -1,0 +1,266 @@
+{
+  "tech_stack": [
+    "TypeScript",
+    "Next.js",
+    "Hono (API Framework)",
+    "Prisma (ORM)",
+    "AI SDK",
+    "Better Auth",
+    "Stripe"
+  ],
+  "features": [
+    {
+      "name": "Chat API",
+      "description": "API endpoint for chat functionality with AI models, supporting streaming responses and tool calling",
+      "files": ["app/api/[[...route]]/chat.ts"],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Chat API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/api/chat": {
+            "post": {
+              "summary": "Create a chat message",
+              "tags": ["chat"],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "object"
+                        },
+                        "selectedModelId": {
+                          "type": "string"
+                        },
+                        "selectedToolName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Chat message processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Note API",
+      "description": "API endpoints for creating, updating, retrieving and deleting notes",
+      "files": ["app/api/[[...route]]/note.ts"],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Note API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/api/note/create": {
+            "post": {
+              "summary": "Create a new note",
+              "tags": ["note"],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Note created successfully"
+                }
+              }
+            }
+          },
+          "/api/note/update/{id}": {
+            "patch": {
+              "summary": "Update a note",
+              "tags": ["note"],
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Note updated successfully"
+                }
+              }
+            }
+          },
+          "/api/note/{id}": {
+            "get": {
+              "summary": "Get a note by ID",
+              "tags": ["note"],
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Note retrieved successfully"
+                }
+              }
+            },
+            "delete": {
+              "summary": "Delete a note",
+              "tags": ["note"],
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Note deleted successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Subscription API",
+      "description": "API endpoint for managing subscriptions and plan upgrades",
+      "files": ["app/api/[[...route]]/subscription.ts"],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "Subscription API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/api/subscription/upgrade": {
+            "post": {
+              "summary": "Upgrade user subscription plan",
+              "tags": ["subscription"],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "plan": {
+                          "type": "string",
+                          "enum": ["PLUS", "PREMIUM"]
+                        },
+                        "callbackUrl": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Subscription upgrade initiated"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "General API",
+      "description": "General API endpoint for health check and greeting",
+      "files": ["app/api/[[...route]]/route.ts"],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {
+          "title": "General API",
+          "version": "1.0.0"
+        },
+        "paths": {
+          "/api": {
+            "get": {
+              "summary": "Health check endpoint",
+              "tags": ["general"],
+              "responses": {
+                "200": {
+                  "description": "API is running",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
