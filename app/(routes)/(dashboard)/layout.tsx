@@ -1,11 +1,11 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { RiLoader5Fill } from "@remixicon/react";
 import { Suspense } from "react";
 import AppSidebar from "@/components/sidebar";
-import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
+// import { auth } from "@/lib/auth";
+// import { redirect } from "next/navigation";
 import MainContent from "./_common/main-content";
 import NotDialog from "@/components/note-dialog/note-dialog";
 
@@ -16,13 +16,13 @@ export default async function DashboardLayout({
     children: React.ReactNode;
 }) {
 
-    const session = await auth.api.getSession({
-        headers: await headers() // you need to pass the headers object.
-    })
+    // const session = await auth.api.getSession({
+    //     headers: await headers() // you need to pass the headers object.
+    // })
 
-    if (!session) {
-        return redirect("/auth/sign-in");
-    }
+    // if (!session) {
+    //     return redirect("/auth/sign-in");
+    // }
     return (
         <Suspense
             fallback={
